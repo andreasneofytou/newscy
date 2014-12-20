@@ -78,6 +78,7 @@ namespace News
             statusBar.ProgressIndicator.ShowAsync();
             statusBar.ProgressIndicator.ProgressValue = 0;
 
+            await NewsDataSource.LoadSources();
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active.
             if (rootFrame == null)

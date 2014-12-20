@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace News.DataModel
 {
@@ -151,11 +153,17 @@ namespace News.DataModel
       results = results.Replace("&dec;", "°");
       results = results.Replace("&hellip;", "…");
       results = results.Replace("&#8216;", "‘");
+      results = results.Replace("&#8242", "′");
       results = results.Replace("&#8217", "’");
+      results = results.Replace("&#8218", "‚");
+      results = results.Replace("&#8220", "“");
+      results = results.Replace("&#8221", "”");
+      results = results.Replace("&#8230", "…");
       results = results.Replace("\t", "");
       results = results.Replace("<br />\n<br />", "\n");
       results = results.Replace("<br />", "");
       results = Regex.Replace(results, "<.*?>", "");
+      results = Regex.Replace(results, "#td.*?}", "");
 
       return results;
     }
@@ -170,11 +178,10 @@ namespace News.DataModel
       if (obj is NewsDataArticle)
       {
         var a = this.PubDate > (obj as NewsDataArticle).PubDate;  // compare user names
-        return a ? 1 : 0;
+        return a ? -1 : 1 ;
       }
 
       throw new ArgumentException("");
     }
-
   }
 }

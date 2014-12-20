@@ -32,7 +32,6 @@ namespace News
     private readonly NavigationHelper navigationHelper;
     private ObservableDictionary defaultViewModel = new ObservableDictionary();
     //private readonly ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView("Resources");
-
     public ObservableDictionary DefaultViewModel
     {
       get { return this.defaultViewModel; }
@@ -62,10 +61,19 @@ namespace News
 
     private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
     {
-      await GetArticles();
-      var allGroups = await NewsDataSource.GetGroupsAsync();
-      this.defaultViewModel["AllGroups"] = allGroups;
-      this.defaultViewModel["RestOfTheGroups"] = allGroups.Reverse().Take(allGroups.Count() - 1).Reverse();
+      if (defaultViewModel.Count < 1)
+      {
+        Hub.IsEnabled = false;
+        LoadingRing.IsEnabled = true;
+        LoadingRing.IsActive = true;
+        LoadingRing.Visibility = Visibility.Visible;
+        var allCategories = await NewsDataSource.GetCategoriesAsync();
+        this.defaultViewModel["AllCategories"] = allCategories;
+        LoadingRing.IsEnabled = false;
+        LoadingRing.Visibility = Visibility.Collapsed;
+        Hub.Visibility = Visibility.Visible;
+        Hub.IsEnabled = true;
+      }
     }
 
     /// <summary>
@@ -91,15 +99,6 @@ namespace News
       }
     }
 
-    private async Task GetArticles()
-    {
-      bool x = await NewsDataSource.CanReadArticleFiles();
-      if (!x)
-      {
-        await RefreshArticles();
-      }
-    }
-
     private void CategoryClick_categoryClick(object sender, ItemClickEventArgs e) 
     {
       if (!Frame.Navigate(typeof(CategoryPage), e.ClickedItem))
@@ -120,10 +119,9 @@ namespace News
         LoadingRing.IsEnabled = true;
         LoadingRing.IsActive = true;
         LoadingRing.Visibility = Visibility.Visible;
-        var allGroups = await NewsDataSource.RefreshGroupsAsync();
+        var allGroups = await NewsDataSource.RefreshCategoriesAsync();
         defaultViewModel.Clear();
-        this.defaultViewModel["AllGroups"] = allGroups;
-        this.defaultViewModel["RestOfTheGroups"] = allGroups.Reverse().Take(allGroups.Count() - 1).Reverse();
+        this.defaultViewModel["AllCategories"] = allGroups;
         LoadingRing.IsEnabled = false;
         LoadingRing.Visibility = Visibility.Collapsed;
         Hub.Visibility = Visibility.Visible;
@@ -133,6 +131,14 @@ namespace News
       {
         MessageDialog message = new MessageDialog("No network available");
         await message.ShowAsync();
+      }
+    }
+
+    private void AppBarButton_SourceClick(object sender, RoutedEventArgs e)
+    {
+      if (!Frame.Navigate(typeof(SourcesPage)))
+      {
+        throw new Exception("NavigationFailedExceptionMessage");
       }
     }
   }

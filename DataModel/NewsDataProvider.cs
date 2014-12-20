@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace News.DataModel
 {
-  class NewsDataProvider
+  public class NewsDataProvider
   {
-    public string Name { get; private set; }
-    public string Description { get; private set; }
-    public List<NewsDataCategory> Categories { get; private set; }
-    public string ImageUrl { get; private set; }
-    public string Url { get; private set; }
-    public bool IsEnebled { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public List<NewsDataCategory> Categories { get; set; }
+    public string ImageUrl { get; set; }
+    public string Url { get; set; }
+    public bool IsEnabled { get; set; }
+
+    public NewsDataProvider() { }
   }
 }

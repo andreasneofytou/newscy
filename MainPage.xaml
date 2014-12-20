@@ -29,7 +29,7 @@
                     SelectionMode="None"
                     IsItemClickEnabled="True"
                     AutomationProperties.AutomationId="ArticlesList"
-                    ItemsSource="{Binding TopArticles}"
+                    ItemsSource="{Binding Articles}"
                     ItemTemplate="{StaticResource ArticleLineTemplate2}"
                     ItemClick="ArticlesList_articleClick" />
         </DataTemplate>
@@ -57,7 +57,12 @@
 
     <Page.BottomAppBar>
         <CommandBar IsSticky="True" ClosedDisplayMode="Minimal" Opacity="1">
-            <AppBarButton Icon="Refresh" Label="Refresh" Click="AppBarButtonRefresh_Click"/>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Refresh" Label="Refresh" Click="AppBarButtonRefresh_Click"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="sources" Click="AppBarButton_SourceClick"/>
+            </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -67,7 +72,7 @@
         <Hub x:Name="Hub">
 
             <HubSection x:Name="HubSection1"
-                        DataContext="{Binding AllGroups[0]}" 
+                        DataContext="{Binding AllCategories[0]}" 
                         HeaderTemplate="{StaticResource HubSectionHeaderTemplate}"
                         UseLayoutRounding="False"
                         AutomationProperties.AutomationId="Section1"
@@ -75,7 +80,7 @@
                         ContentTemplate="{StaticResource ArticlesListBigTemplate}"
                         />
             <HubSection x:Name="HubSection2" 
-                        DataContext="{Binding AllGroups[1]}" 
+                        DataContext="{Binding AllCategories[1]}" 
                         HeaderTemplate="{StaticResource HubSectionHeaderTemplate}"
                         UseLayoutRounding="False"
                         AutomationProperties.AutomationId="Section2"
@@ -84,7 +89,7 @@
                         />
 
             <HubSection x:Name="HubSection3" 
-                        DataContext="{Binding AllGroups[2]}"
+                        DataContext="{Binding AllCategories[2]}"
                         HeaderTemplate="{StaticResource HubSectionHeaderTemplate}"
                         UseLayoutRounding="False"
                         AutomationProperties.AutomationId="Section3"
@@ -93,7 +98,7 @@
                         />
 
             <HubSection  x:Uid="MoreTiles" Width="Auto"
-                         DataContext="{Binding RestOfTheGroups}" >
+                         DataContext="{Binding AllCategories}" >
                 <HubSection.Header>
                     <TextBlock Text="Περισσότερα" FontSize="40" FontWeight="Normal" Margin="0,20,0,0"/>
                 </HubSection.Header>
