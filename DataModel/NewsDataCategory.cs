@@ -44,7 +44,21 @@ namespace News.DataModel
     public IEnumerable<NewsDataArticle> TopArticles
     {
       set { } 
-      get { return this.Articles.Take(15); }
+      get 
+      { 
+        if(Articles == null)
+        {
+          return null;
+        }
+        else if (Articles.Count >14)
+        {
+          return this.Articles.Take(15);
+        }
+        else
+        {
+          return this.Articles;
+        }
+      }
     }
 
     public NewsDataCategory(string title, string greekTitle, string description, string url)

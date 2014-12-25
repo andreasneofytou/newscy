@@ -61,6 +61,10 @@ namespace News
 
     private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
     {
+      if (!(await CanDownloadSources()))
+      {
+        return;
+      }
       if (defaultViewModel.Count < 1)
       {
         Hub.IsEnabled = false;
@@ -109,10 +113,32 @@ namespace News
     private async void AppBarButtonRefresh_Click(object sender, RoutedEventArgs e) 
     {
       await RefreshArticles();
-    } 
+    }
+
+    private async Task<bool> CanDownloadSources()
+    {
+      if (NewsDataSource.NewsProviders.Where(x => x.IsEnabled == true).Count() == 0)
+      {
+        MessageDialog message = new MessageDialog("Παρακαλώ επιλέξτε πηγές");
+        await message.ShowAsync();
+        if (!Frame.Navigate(typeof(SourcesPage)))
+        {
+          throw new Exception("NavigationFailedExceptionMessage");
+        }
+        return false;
+      }
+
+      return true;
+    }
 
     private async Task RefreshArticles()
     {
+
+      if(!(await CanDownloadSources()))
+      {
+        return;
+      }
+
       if (NetworkInterface.GetIsNetworkAvailable())
       {
         Hub.IsEnabled = false;     

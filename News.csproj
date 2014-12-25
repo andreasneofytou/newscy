@@ -122,7 +122,10 @@
     <Content Include="Assets\HubBackground.theme-dark.png" />
     <Content Include="Assets\HubBackground.theme-light.png" />
     <Content Include="Assets\Logo.scale-240.png" />
+    <Content Include="Assets\no_image_available.gif" />
+    <Content Include="Assets\offsite.jpg" />
     <Content Include="Assets\Phileleftheros.png" />
+    <Content Include="Assets\politis.jpg" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-140.png" />
     <Content Include="Assets\SmallLogo.scale-240.png" />

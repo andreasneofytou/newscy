@@ -21,7 +21,7 @@
             <Grid x:Name="gridView" Margin="10,0"  Height="Auto">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50*" />
-                    <RowDefinition Height="200*" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="600*" />
                 </Grid.RowDefinitions>
                 <TextBlock Text="{Binding Title}" TextWrapping="WrapWholeWords" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5" />

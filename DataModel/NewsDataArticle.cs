@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Windows.Data.Html;
 
 namespace News.DataModel
 {
@@ -64,11 +65,11 @@ namespace News.DataModel
           Author = element.Value;
           break;
         case "content":
-          Description = RemoveHtmlTags(element.Value);
+          Description = HtmlUtilities.ConvertToText(element.Value);
           break;
         case "description":
           ExtractImage(element.Value);
-          Description = RemoveHtmlTags(element.Value);
+          Description = HtmlUtilities.ConvertToText(element.Value); 
           break;
         case "author":
           Author = element.Value;
@@ -106,7 +107,7 @@ namespace News.DataModel
           }
           else if (name.Contains("content"))
           {
-            Description = RemoveHtmlTags(element.Value);
+            Description = HtmlUtilities.ConvertToText(element.Value);
           }
           break;
       }
@@ -114,7 +115,7 @@ namespace News.DataModel
 
     private bool ExtractImage(string description)
     {
-      if (description.Contains("<img") && description.Contains("src=\"http://dialogos"))
+      if (description.Contains("<img") && description.Contains("src=\"http"))
       {
         var f = description.IndexOf("src=\"");
         var b = description.IndexOf("g\"");
@@ -125,47 +126,6 @@ namespace News.DataModel
         }
       }
       return false;
-    }
-
-    private string RemoveHtmlTags(string source)
-    {
-      string results = source;
-
-      results = results.Replace("&amp;", "&");
-      results = results.Replace("&lt;", "<");
-      results = results.Replace("&gt;", "<");
-      results = results.Replace("&nbsp;", " ");
-      results = results.Replace("&quot;", "\"");
-      results = results.Replace("&euro;", "€");
-      results = results.Replace("&ndash;", "-");
-      results = results.Replace("&laquo;", "«");
-      results = results.Replace("&raquo;", "»");
-      results = results.Replace("&copy;", "©  ");
-      results = results.Replace("&pound;", "£");
-      results = results.Replace("&#39;", "\'");
-      results = results.Replace("&rsquo;", "’");
-      results = results.Replace("&lsquo;", "‘");
-      results = results.Replace("&rdquo;", "”");
-      results = results.Replace("&ldquo;", "“");
-      results = results.Replace("&micro;", "μ");
-      results = results.Replace("&middot;", "·");
-      results = results.Replace("&frac12;", "½");
-      results = results.Replace("&dec;", "°");
-      results = results.Replace("&hellip;", "…");
-      results = results.Replace("&#8216;", "‘");
-      results = results.Replace("&#8242", "′");
-      results = results.Replace("&#8217", "’");
-      results = results.Replace("&#8218", "‚");
-      results = results.Replace("&#8220", "“");
-      results = results.Replace("&#8221", "”");
-      results = results.Replace("&#8230", "…");
-      results = results.Replace("\t", "");
-      results = results.Replace("<br />\n<br />", "\n");
-      results = results.Replace("<br />", "");
-      results = Regex.Replace(results, "<.*?>", "");
-      results = Regex.Replace(results, "#td.*?}", "");
-
-      return results;
     }
 
     public override string ToString()

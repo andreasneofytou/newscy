@@ -34,7 +34,7 @@ namespace News.DataModel
         new NewsDataCategory(NewsDataCategory.RECIPES, NewsDataCategory.RECIPES_EL, "Greek and Cypriot recipes", "http://www.philenews.com/Publications/RssModule/rss.aspx?CategoryId=139" ),
         new NewsDataCategory(NewsDataCategory.CULTURE, NewsDataCategory.CULTURE_EL, "Culture", "http://www.philenews.com/Publications/RssModule/rss.aspx?CategoryId=7" ),
       },
-      IsEnabled = true,
+      IsEnabled = false,
       Url = "http://philenews.com"      
     };
 
@@ -58,11 +58,52 @@ namespace News.DataModel
         new NewsDataCategory(NewsDataCategory.CULTURE, NewsDataCategory.CULTURE_EL, "Culture", "http://www.philenews.com/Publications/RssModule/rss.aspx?CategoryId=7" ),
         new NewsDataCategory(NewsDataCategory.ENVIRONMENT, NewsDataCategory.ENVIRONMENT_EL, "Environment", "http://dialogos.com.cy/blog/category/oikologos/perivalon/feed/")
       },
-      IsEnabled = true,
+      IsEnabled = false,
       Url = "http://dialogos.com.cy"
     };
 
-    private static List<NewsDataProvider> _dataPoviders = new List<NewsDataProvider>() { Philelefhteros, Dialogos };
+    private static NewsDataProvider Politis = new NewsDataProvider
+    {
+      Name = "Politis",
+      Description = "Ημερήσια πρωινή εφημερίδα",
+      ImageUrl = "/Assets/politis.jpg",
+      Categories = new List<NewsDataCategory> 
+      {
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://www.politis-news.com/rss/news.xml " ),
+        new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://www.politis-news.com/rss/news_int.xml" ),
+        new NewsDataCategory(NewsDataCategory.CYPRUS, NewsDataCategory.CYPRUS_EL, "News about Cyprus", "http://www.politis-news.com/rss/news_cyprus.xml" ),
+        new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://www.politis-news.com/rss/news_greece.xml" ),
+        new NewsDataCategory(NewsDataCategory.ECONOMY, NewsDataCategory.ECONOMY_EL, "Economy", "http://www.politis-news.com/rss/news_economy.xml" ),
+        new NewsDataCategory(NewsDataCategory.SPORTS, NewsDataCategory.SPORTS_EL, "Sports", "http://www.politis-sports.com/rss/newsrss.xml" ),
+        new NewsDataCategory(NewsDataCategory.TECHNOLOGY, NewsDataCategory.TECHNOLOGY_EL, "News about technology", "http://www.politis-news.com/rss/news_tech.xml" ),
+        new NewsDataCategory(NewsDataCategory.WEIRD, NewsDataCategory.WEIRD_EL, "Weird news from around the globe", "http://www.politis-news.com/rss/news_odd.xml" ),
+        new NewsDataCategory(NewsDataCategory.CULTURE, NewsDataCategory.CULTURE_EL, "Culture", "http://www.politis-news.com/rss/lifestyle.xml" ),
+      },
+      IsEnabled = false,
+      Url = "http://www.politis-news.com"
+    };
+
+    private static NewsDataProvider Offsite = new NewsDataProvider
+    {
+      Name = "Offsite",
+      Description = "Καθημερινή ηλεκτρονική εφημερίδα με νέα από Κύπρο, Ελλάδα και τον κόσμο.",
+      ImageUrl = "/Assets/offsite.jpg",
+      Categories = new List<NewsDataCategory> 
+      {
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://offsite.com.cy/feed/" ),
+        new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://offsite.com.cy/category/offsite/kosmos/feed/" ),
+        new NewsDataCategory(NewsDataCategory.CYPRUS, NewsDataCategory.CYPRUS_EL, "News about Cyprus", "http://offsite.com.cy/category/offsite/kypros/topika/feed/" ),
+        new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://offsite.com.cy/category/offsite/ellada/feed/" ),
+        new NewsDataCategory(NewsDataCategory.ECONOMY, NewsDataCategory.ECONOMY_EL, "Economy", "http://offsite.com.cy/category/offsite/kypros/oikonomia/feed/" ),
+        new NewsDataCategory(NewsDataCategory.SPORTS, NewsDataCategory.SPORTS_EL, "Sports", "http://offsite.com.cy/category/offsite/athlitismos/feed/" ),
+        new NewsDataCategory(NewsDataCategory.TECHNOLOGY, NewsDataCategory.TECHNOLOGY_EL, "News about technology", "http://offsite.com.cy/category/offsite/texnologia/feed/" ),
+        new NewsDataCategory(NewsDataCategory.ENVIRONMENT, NewsDataCategory.ENVIRONMENT_EL, "Environment", "http://offsite.com.cy/category/offsite/oikologia/feed/")
+      },
+      IsEnabled = false,
+      Url = "http://offsite.com.cy"
+    };
+
+    private static List<NewsDataProvider> _dataPoviders = new List<NewsDataProvider>() { Philelefhteros, Dialogos, Offsite };
     public static List<NewsDataProvider> NewsProviders { get { return _dataPoviders; } }
 
 

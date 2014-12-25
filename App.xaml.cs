@@ -53,6 +53,44 @@ namespace News
           }
         }
 
+          bool CalculateNumbs()
+        {
+            string a = "[{()}]";
+            var b = a.ToList();
+            bool d = true;
+            char c;
+            List<char> open = new List<char>();
+            List<char> close = new List<char>();
+
+            for (int i = 0; i < b.Count; i++ )
+            {
+              char index = b[i];
+              if (index == '[' || index == '{' || index == '(')
+              {
+                open.Add(index);
+
+              }
+              else if (index == ']' || index == '}' || index == ')')
+              {
+                close.Add(index);
+              }
+          }
+
+            if( open.Count == 0 && close.Count == 0 ) return true;
+            if( open.Count > close.Count ||open.Count < close.Count ) return false;
+
+            int openedIndex = 0;
+            for (int j = open.Count - 1; j >= 0; j-- )
+            {
+              if
+(open[openedIndex] != close[j])
+
+                return false;
+              openedIndex++;
+            }
+              return true;
+        }
+
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used when the application is launched to open a specific file, to display
@@ -68,6 +106,7 @@ namespace News
             }
 #endif
 
+            CalculateNumbs();
             Frame rootFrame = Window.Current.Content as Frame;
 
             var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();

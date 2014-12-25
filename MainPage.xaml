@@ -58,10 +58,10 @@
     <Page.BottomAppBar>
         <CommandBar IsSticky="True" ClosedDisplayMode="Minimal" Opacity="1">
             <CommandBar.PrimaryCommands>
-                <AppBarButton Icon="Refresh" Label="Refresh" Click="AppBarButtonRefresh_Click"/>
+                <AppBarButton Icon="Refresh" Label="Ανανέωση" Click="AppBarButtonRefresh_Click"/>
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
-                <AppBarButton Label="sources" Click="AppBarButton_SourceClick"/>
+                <AppBarButton Label="πηγές" Click="AppBarButton_SourceClick"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
@@ -97,26 +97,22 @@
                         ContentTemplate="{StaticResource ArticlesListSmallTemplate}"
                         />
 
-            <HubSection  x:Uid="MoreTiles" Width="Auto"
-                         DataContext="{Binding AllCategories}" >
+            <HubSection  x:Uid="MoreTiles" DataContext="{Binding AllCategories}" >
                 <HubSection.Header>
                     <TextBlock Text="Περισσότερα" FontSize="40" FontWeight="Normal" Margin="0,20,0,0"/>
                 </HubSection.Header>
                 <DataTemplate>
-                    <GridView                         
+                    <ScrollViewer>
+                    <GridView
                         ItemsSource="{Binding}"       
                         AutomationProperties.AutomationId="ItemGridView"
                         AutomationProperties.Name="Items In Group"
                         ItemTemplate="{StaticResource Standard200x180TileItemTemplate}"
                         SelectionMode="None"
                         IsItemClickEnabled="True"
-                        ItemClick="CategoryClick_categoryClick">
-                        <GridView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <ItemsWrapGrid />
-                            </ItemsPanelTemplate>
-                        </GridView.ItemsPanel>
+                        ItemClick="CategoryClick_categoryClick" >
                     </GridView>
+                    </ScrollViewer>
                 </DataTemplate>
             </HubSection>
         </Hub>
