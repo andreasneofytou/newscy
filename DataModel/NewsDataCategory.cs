@@ -20,7 +20,9 @@ namespace News.DataModel
     public const string SPORTS = "Sports";
     public const string INTERVIEWS = "Interviews";
     public const string ABSURD = "Absurd";
-    public const string ENVIRONMENT = "ENVIRONMENT";
+    public const string ENVIRONMENT = "Environment";
+    public const string POLITICS = "Politics";
+    public const string SCIENCE = "Science";
 
     public const string CYPRUS_EL = "Κύπρος";
     public const string GREECE_EL = "Ελλάδα";
@@ -35,6 +37,8 @@ namespace News.DataModel
     public const string INTERVIEWS_EL = "Συνεντεύξεις";
     public const string ABSURD_EL = "Παράλογος";
     public const string ENVIRONMENT_EL = "Περιβάλον";
+    public const string POLITICS_EL = "Πολιτική";
+    public const string SCIENCE_EL = "Επιστήμη";
     
     public string Title { get; set; }
     public string GreekTitle { get; set; }

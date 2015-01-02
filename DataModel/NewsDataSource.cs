@@ -69,7 +69,7 @@ namespace News.DataModel
       ImageUrl = "/Assets/politis.jpg",
       Categories = new List<NewsDataCategory> 
       {
-        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://www.politis-news.com/rss/news.xml " ),
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://www.politis-news.com/rss/news.xml" ),
         new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://www.politis-news.com/rss/news_int.xml" ),
         new NewsDataCategory(NewsDataCategory.CYPRUS, NewsDataCategory.CYPRUS_EL, "News about Cyprus", "http://www.politis-news.com/rss/news_cyprus.xml" ),
         new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://www.politis-news.com/rss/news_greece.xml" ),
@@ -81,6 +81,24 @@ namespace News.DataModel
       },
       IsEnabled = false,
       Url = "http://www.politis-news.com"
+    };
+
+    private static NewsDataProvider IKypros = new NewsDataProvider
+    {
+      Name = "ikypros",
+      Description = "Ηλεκτρονική Πύλη ikypros - Άμεση ενημέρωση για όσα συμβαίνουν στην Κύπρο και στον κόσμο.",
+      ImageUrl = "/Assets/ikypros.jpg",
+      Categories = new List<NewsDataCategory> 
+      {
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://ikypros.com/?feed=rss2" ),
+        new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://ikypros.com/?cat=31&feed=rss2" ),
+        new NewsDataCategory(NewsDataCategory.CYPRUS, NewsDataCategory.CYPRUS_EL, "News about Cyprus", "http://ikypros.com/?cat=3&feed=rss2" ),
+        new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://ikypros.com/?cat=30&feed=rss2" ),
+        new NewsDataCategory(NewsDataCategory.SPORTS, NewsDataCategory.SPORTS_EL, "Sports", "http://ikypros.com/?cat=34&feed=rss2" ),
+        new NewsDataCategory(NewsDataCategory.ENVIRONMENT, NewsDataCategory.ENVIRONMENT_EL, "Environment", "http://ikypros.com/?cat=9&feed=rss2")
+      },
+      IsEnabled = false,
+      Url = "http://ikypros.com"
     };
 
     private static NewsDataProvider Offsite = new NewsDataProvider
@@ -103,7 +121,151 @@ namespace News.DataModel
       Url = "http://offsite.com.cy"
     };
 
-    private static List<NewsDataProvider> _dataPoviders = new List<NewsDataProvider>() { Philelefhteros, Dialogos, Offsite };
+
+    private static NewsDataProvider NewsGr = new NewsDataProvider
+    {
+      Name = "news.gr",
+      Description = "Ειδήσεις και Άμεση Ενημέρωση. Ειδήσεις τώρα, από την Ελλάδα και τον Κόσμο.",
+      ImageUrl = "/Assets/newsgr.png",
+      Categories = new List<NewsDataCategory> 
+      {
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://www.news.gr/rss.ashx?colid=2" ),
+        new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://www.news.gr/rss.ashx?catid=10" ),
+        new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://www.news.gr/rss.ashx?catid=7" ),
+        new NewsDataCategory(NewsDataCategory.POLITICS, NewsDataCategory.POLITICS_EL, "News about Politics", "http://www.news.gr/rss.ashx?catid=5" ),
+        new NewsDataCategory(NewsDataCategory.ECONOMY, NewsDataCategory.ECONOMY_EL, "Economy", "http://www.news.gr/rss.ashx?catid=9" ),
+        new NewsDataCategory(NewsDataCategory.SPORTS, NewsDataCategory.SPORTS_EL, "Sports", "http://www.news.gr/rss.ashx?catid=11" ),
+        new NewsDataCategory(NewsDataCategory.TECHNOLOGY, NewsDataCategory.TECHNOLOGY_EL, "News about technology", "http://www.news.gr/rss.ashx?catid=12" ),
+        new NewsDataCategory(NewsDataCategory.ENVIRONMENT, NewsDataCategory.ENVIRONMENT_EL, "Environment", "http://www.news.gr/rss.ashx?catid=17")
+      },
+      IsEnabled = false,
+      Url = "http://news.gr"
+    };
+
+    private static NewsDataProvider Thema = new NewsDataProvider
+    {
+      Name = "Πρώτο θέμα",
+      Description = "Όλες οι ειδήσεις και τελευταία γεγονότα από το ΠΡΩΤΟ ΘΕΜΑ!",
+      ImageUrl = "/Assets/thema.png",
+      Categories = new List<NewsDataCategory> 
+      {
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://www.protothema.gr/rss/news/general/" ),
+        new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://www.protothema.gr/rss/news/world" ),
+        new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://www.protothema.gr/rss/news/greece" ),
+        new NewsDataCategory(NewsDataCategory.POLITICS, NewsDataCategory.POLITICS_EL, "News about Politics", "http://www.protothema.gr/rss/news/politics" ),
+        new NewsDataCategory(NewsDataCategory.ECONOMY, NewsDataCategory.ECONOMY_EL, "Economy", "http://www.protothema.gr/rss/news/economy" ),
+        new NewsDataCategory(NewsDataCategory.SPORTS, NewsDataCategory.SPORTS_EL, "Sports", "http://www.protothema.gr/rss/news/sports" ),
+        new NewsDataCategory(NewsDataCategory.TECHNOLOGY, NewsDataCategory.TECHNOLOGY_EL, "News about technology", "http://www.protothema.gr/rss/news/technology" ),
+        new NewsDataCategory(NewsDataCategory.ENVIRONMENT, NewsDataCategory.ENVIRONMENT_EL, "Environment", "http://www.protothema.gr/rss/news/environmnent")
+      },
+      IsEnabled = false,
+      Url = "http://news.gr"
+    };
+
+    private static NewsDataProvider InGr = new NewsDataProvider
+    {
+      Name = "In.gr",
+      Description = "The leading news site in Greece",
+      ImageUrl = "/Assets/ingr.png",
+      Categories = new List<NewsDataCategory> 
+      {
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://rss.in.gr/feed/news" ),
+        new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://rss.in.gr/feed/news/world" ),
+        new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://rss.in.gr/feed/news/greece" ),
+        new NewsDataCategory(NewsDataCategory.ECONOMY, NewsDataCategory.ECONOMY_EL, "Economy", "http://rss.in.gr/feed/news/economy" ),
+        new NewsDataCategory(NewsDataCategory.SPORTS, NewsDataCategory.SPORTS_EL, "Sports", "http://rss.in.gr/feed/sports" ),
+        new NewsDataCategory(NewsDataCategory.TECHNOLOGY, NewsDataCategory.TECHNOLOGY_EL, "News about technology", "http://rss.in.gr/feed/technology/main" ),
+        new NewsDataCategory(NewsDataCategory.SCIENCE, NewsDataCategory.SCIENCE_EL, "Science", "http://rss.in.gr/feed/news/science"),
+        new NewsDataCategory(NewsDataCategory.CULTURE, NewsDataCategory.CULTURE_EL, "Culture", "http://rss.in.gr/feed/news/culture" ),
+      },
+      IsEnabled = false,
+      Url = "http://news.gr"
+    };
+
+    private static NewsDataProvider Skai = new NewsDataProvider
+    {
+      Name = "Σκάι",
+      Description = "Η επικαιρότητα από τον ΣΚΑΪ.",
+      ImageUrl = "/Assets/skai.png",
+      Categories = new List<NewsDataCategory> 
+      {
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://feeds.feedburner.com/skai/Uulu" ),
+        new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://feeds.feedburner.com/skai/aqOL" ),
+        new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://feeds.feedburner.com/skai/PLwa" ),        
+        new NewsDataCategory(NewsDataCategory.POLITICS, NewsDataCategory.POLITICS_EL, "News about Politics", "http://feeds.feedburner.com/skai/yinm" ),
+        new NewsDataCategory(NewsDataCategory.ECONOMY, NewsDataCategory.ECONOMY_EL, "Economy", "http://feeds.feedburner.com/skai/oPUt" ),
+        new NewsDataCategory(NewsDataCategory.SPORTS, NewsDataCategory.SPORTS_EL, "Sports", "http://feeds.feedburner.com/skai/TfmK" ),
+        new NewsDataCategory(NewsDataCategory.TECHNOLOGY, NewsDataCategory.TECHNOLOGY_EL, "News about technology", "http://feeds.feedburner.com/skai/fqsg" ),
+        new NewsDataCategory(NewsDataCategory.CULTURE, NewsDataCategory.CULTURE_EL, "Culture", "http://feeds.feedburner.com/skai/ppGl" ),        
+        new NewsDataCategory(NewsDataCategory.ENVIRONMENT, NewsDataCategory.ENVIRONMENT_EL, "Environment", "http://feeds.feedburner.com/skai/jVWs"),
+        new NewsDataCategory(NewsDataCategory.WEIRD, NewsDataCategory.WEIRD_EL, "Weird news from around the globe", "http://feeds.feedburner.com/skai/bpAR" ),
+      },
+      IsEnabled = false,
+      Url = "http://skai.gr"
+    };
+
+    private static NewsDataProvider RealGr = new NewsDataProvider
+    {
+      Name = "Real.gr",
+      Description = "Ειδήσεις από την Ελλάδα και τον Κόσμο, άμεση ενημέρωση για όλες τις εξελίξεις, Διασκέδαση – Ψυχαγωγία και Αθλητισμός.",
+      ImageUrl = "/Assets/realgr.jpeg",
+      Categories = new List<NewsDataCategory> 
+      {
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://www.real.gr/Rss.aspx?pid=474" ),
+        new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://www.real.gr/Rss.aspx?pid=148" ),
+        new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://www.real.gr/Rss.aspx?pid=149" ),        
+        new NewsDataCategory(NewsDataCategory.POLITICS, NewsDataCategory.POLITICS_EL, "News about Politics", "http://www.real.gr/Rss.aspx?pid=151" ),
+        new NewsDataCategory(NewsDataCategory.ECONOMY, NewsDataCategory.ECONOMY_EL, "Economy", "http://www.real.gr/Rss.aspx?pid=150" ),
+        new NewsDataCategory(NewsDataCategory.SPORTS, NewsDataCategory.SPORTS_EL, "Sports", "http://www.real.gr/Rss.aspx?pid=146" ),
+        new NewsDataCategory(NewsDataCategory.CULTURE, NewsDataCategory.CULTURE_EL, "Culture", "http://www.real.gr/Rss.aspx?pid=144" ),        
+        new NewsDataCategory(NewsDataCategory.ENVIRONMENT, NewsDataCategory.ENVIRONMENT_EL, "Environment", "http://www.real.gr/Rss.aspx?pid=147"),
+      },
+      IsEnabled = false,
+      Url = "http://www.real.gr"
+    };
+
+    private static NewsDataProvider NewsBeast = new NewsDataProvider
+    {
+      Name = "NewsBeast",
+      Description = "Το τέρας των ειδήσεων με ειδήσεις, media, ψυχαγωγία, αθλητικά, περιβάλλον, lifestyle, γυναίκα, αυτοκίνητο, χρηματιστήριο, ενημέρωση, ότι να ναι.",
+      ImageUrl = "/Assets/newsbeast.jpg",
+      Categories = new List<NewsDataCategory> 
+      {
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://www.newsbeast.gr/feeds/home" ),
+        new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://www.newsbeast.gr/feeds/world" ),
+        new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://www.newsbeast.gr/feeds/greece" ),        
+        new NewsDataCategory(NewsDataCategory.POLITICS, NewsDataCategory.POLITICS_EL, "News about Politics", "http://www.newsbeast.gr/feeds/politiki" ),
+        new NewsDataCategory(NewsDataCategory.ECONOMY, NewsDataCategory.ECONOMY_EL, "Economy", "http://www.newsbeast.gr/feeds/financial" ),
+        new NewsDataCategory(NewsDataCategory.SPORTS, NewsDataCategory.SPORTS_EL, "Sports", "http://www.newsbeast.gr/feeds/sports" ),
+        new NewsDataCategory(NewsDataCategory.CULTURE, NewsDataCategory.CULTURE_EL, "Culture", "http://www.newsbeast.gr/feeds/society" ),        
+        new NewsDataCategory(NewsDataCategory.ENVIRONMENT, NewsDataCategory.ENVIRONMENT_EL, "Environment", "http://www.newsbeast.gr/feeds/environment"),
+        new NewsDataCategory(NewsDataCategory.TECHNOLOGY, NewsDataCategory.TECHNOLOGY_EL, "News about technology", "http://www.newsbeast.gr/feeds/technology" ),        
+        new NewsDataCategory(NewsDataCategory.WEIRD, NewsDataCategory.WEIRD_EL, "Weird news from around the globe", "http://www.newsbeast.gr/feeds/weird" ),
+      },
+      IsEnabled = false,
+      Url = "http://www.newsbeast.gr"
+    };
+
+    private static NewsDataProvider Enet = new NewsDataProvider
+    {
+      Name = "Ελευθεροτυπία",
+      Description = "Ειδήσεις από την Ελλάδα και τον Κόσμο.",
+      ImageUrl = "/Assets/enet.png",
+      Categories = new List<NewsDataCategory> 
+      {
+        new NewsDataCategory(NewsDataCategory.TOP_STORIES, NewsDataCategory.TOP_STORIES_EL, "Top Stories", "http://www.enet.gr/rss?i=news.el.article" ),
+        new NewsDataCategory(NewsDataCategory.WORLD, NewsDataCategory.WORLD_EL, "News from around the world", "http://www.enet.gr/rss?i=news.el.categories&c=die8nh" ),
+        new NewsDataCategory(NewsDataCategory.GREECE, NewsDataCategory.GREECE_EL, "News about Greece", "http://www.enet.gr/rss?i=news.el.categories&c=ellada" ),        
+        new NewsDataCategory(NewsDataCategory.POLITICS, NewsDataCategory.POLITICS_EL, "News about Politics", "http://www.enet.gr/rss?i=news.el.categories&c=politikh" ),
+        new NewsDataCategory(NewsDataCategory.ECONOMY, NewsDataCategory.ECONOMY_EL, "Economy", "http://www.enet.gr/rss?i=news.el.categories&c=oikonomia" ),
+        new NewsDataCategory(NewsDataCategory.SPORTS, NewsDataCategory.SPORTS_EL, "Sports", "http://www.enet.gr/rss?i=news.el.categories&c=a8lhtismos" ),
+        new NewsDataCategory(NewsDataCategory.TECHNOLOGY, NewsDataCategory.TECHNOLOGY_EL, "News about technology", "http://www.enet.gr/rss?i=news.el.categories&c=episthmh--texnologia" ),        
+      },
+      IsEnabled = false,
+      Url = "http://www.enet.gr"
+    };
+
+    private static List<NewsDataProvider> _dataPoviders = new List<NewsDataProvider>() { Philelefhteros, Dialogos, IKypros, Offsite, NewsGr, Enet, Thema, InGr, Skai, RealGr, NewsBeast };
     public static List<NewsDataProvider> NewsProviders { get { return _dataPoviders; } }
 
 
@@ -140,8 +302,9 @@ namespace News.DataModel
 
     public static async Task<IEnumerable<NewsDataCategory>> RefreshCategoriesAsync()
     {
+      _newsDataSource._categories.Clear();
       await NewsDataSource.DownloadSources(false);
-      await _newsDataSource.RetrieveDataAsync();
+      //await _newsDataSource.RetrieveDataAsync();
 
       return _newsDataSource.Categories;
     }
@@ -182,10 +345,34 @@ namespace News.DataModel
         }
         foreach(var category in provider.Categories)
         {
-          List<NewsDataArticle> artcles = await DownloadAricles(category.Url);
-          category.Articles = artcles;
+          List<NewsDataArticle> artcles = await DownloadAricles(category.Url) as List<NewsDataArticle>;
+          if (artcles.Count > 24)
+          {
+            var a = artcles.Take(25).ToList();
+            category.Articles = a as List<NewsDataArticle>;
+
+          }
+          else
+          {
+            category.Articles = artcles;
+          }
+          if (_newsDataSource._categories.Where(x => x.Title.Equals(category.Title)).Count() > 0)
+          {
+            var a = _newsDataSource._categories.Where(x => x.Title.Equals(category.Title));
+            if (a.ToList()[0].Articles != null)
+            {
+              a.ToList()[0].Articles.AddRange(category.Articles);
+            }
+            else a.ToList()[0].Articles = category.Articles;
+
+          }
+          else
+          {
+            _newsDataSource._categories.Add(category);
+          }
         }
-        await SerializeProvider(provider);
+        
+        //await SerializeProvider(provider);
       }
     }
 
@@ -292,7 +479,10 @@ namespace News.DataModel
           }
           else
           {
-            cat.Articles.Sort();
+            if (cat.Articles != null && cat.Articles.Count > 0)
+            {
+              cat.Articles.Sort();
+            }
             categories.Add(cat);
           }
         }

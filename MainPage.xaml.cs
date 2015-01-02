@@ -61,22 +61,41 @@ namespace News
 
     private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
     {
+      SetTemplateForRes();
       if (!(await CanDownloadSources()))
       {
         return;
       }
       if (defaultViewModel.Count < 1)
       {
-        Hub.IsEnabled = false;
-        LoadingRing.IsEnabled = true;
-        LoadingRing.IsActive = true;
-        LoadingRing.Visibility = Visibility.Visible;
-        var allCategories = await NewsDataSource.GetCategoriesAsync();
-        this.defaultViewModel["AllCategories"] = allCategories;
-        LoadingRing.IsEnabled = false;
-        LoadingRing.Visibility = Visibility.Collapsed;
-        Hub.Visibility = Visibility.Visible;
-        Hub.IsEnabled = true;
+        LoadingBar.Visibility = Visibility.Visible;
+        LoadingBar.IsEnabled = true;
+        var allGroups = await NewsDataSource.GetCategoriesAsync();
+        defaultViewModel.Clear();
+        this.defaultViewModel["AllCategories"] = allGroups;
+        LoadingBar.Visibility = Visibility.Collapsed;
+        LoadingBar.IsEnabled = false;
+      }
+    }
+
+    private void SetTemplateForRes()
+    {
+      switch (ResolutionHelper.CurrentResolution)
+      {
+        case Resolutions.FULL_HD:
+          MoreTiles.ContentTemplate = (DataTemplate)this.Resources["TileItemTemplateFullHD"];
+          break;
+        case Resolutions.HD:
+          MoreTiles.ContentTemplate = (DataTemplate)this.Resources["TileItemTemplateHD"];
+          break;
+        case Resolutions.WVGA:
+          MoreTiles.ContentTemplate = (DataTemplate)this.Resources["TileItemTemplateWVGA"];
+          break;
+        case Resolutions.WXGA:
+          MoreTiles.ContentTemplate = (DataTemplate)this.Resources["TileItemTemplateWXGA"];
+          break;
+        default:
+          break;
       }
     }
 
@@ -112,7 +131,7 @@ namespace News
     }
     private async void AppBarButtonRefresh_Click(object sender, RoutedEventArgs e) 
     {
-      await RefreshArticles();
+       RefreshArticles();
     }
 
     private async Task<bool> CanDownloadSources()
@@ -141,17 +160,23 @@ namespace News
 
       if (NetworkInterface.GetIsNetworkAvailable())
       {
-        Hub.IsEnabled = false;     
-        LoadingRing.IsEnabled = true;
-        LoadingRing.IsActive = true;
-        LoadingRing.Visibility = Visibility.Visible;
+        LoadingBar.Visibility = Visibility.Visible;
+        LoadingBar.IsEnabled = true;
+        //Hub.IsEnabled = false;     
+        //LoadingRing.IsEnabled = true;
+        //LoadingRing.IsActive = true;
+       // LoadingRing.Visibility = Visibility.Visible;
         var allGroups = await NewsDataSource.RefreshCategoriesAsync();
         defaultViewModel.Clear();
         this.defaultViewModel["AllCategories"] = allGroups;
-        LoadingRing.IsEnabled = false;
-        LoadingRing.Visibility = Visibility.Collapsed;
-        Hub.Visibility = Visibility.Visible;
-        Hub.IsEnabled = true;
+       
+        //LoadingRing.IsEnabled = false;
+        //LoadingRing.Visibility = Visibility.Collapsed;
+        //Hub.Visibility = Visibility.Visible;
+        //Hub.IsEnabled = true;
+        NewsDataSource.SaveSources();
+        LoadingBar.Visibility = Visibility.Collapsed;
+        LoadingBar.IsEnabled = false;
       }
       else
       {
