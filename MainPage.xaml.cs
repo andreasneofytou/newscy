@@ -88,6 +88,9 @@ namespace News
         case Resolutions.HD:
           MoreTiles.ContentTemplate = (DataTemplate)this.Resources["TileItemTemplateHD"];
           break;
+        case Resolutions.HD16:
+          MoreTiles.ContentTemplate = (DataTemplate)this.Resources["TileItemTemplateHD16"];
+          break;
         case Resolutions.WVGA:
           MoreTiles.ContentTemplate = (DataTemplate)this.Resources["TileItemTemplateWVGA"];
           break;
@@ -95,6 +98,7 @@ namespace News
           MoreTiles.ContentTemplate = (DataTemplate)this.Resources["TileItemTemplateWXGA"];
           break;
         default:
+          MoreTiles.ContentTemplate = (DataTemplate)this.Resources["TileItemTemplateWXGA"];
           break;
       }
     }

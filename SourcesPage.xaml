@@ -1,0 +1,133 @@
+﻿<Page
+    x:Class="News.SourcesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:News"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <DataTemplate x:Key="SourceListTemplateFullHD">
+            <Grid Margin="0,0,0,5" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="InnerGrid" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="150" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="{Binding ImageUrl, TargetNullValue= '/Assests/LightGray.png'}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" />
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}" Margin="5,0,0,5" TextWrapping="WrapWholeWords" />
+                        <TextBlock Text="{Binding Description}"  Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" TextTrimming="CharacterEllipsis" TextLineBounds="Tight" MaxLines="1" />
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="2" OnContent="" OffContent="" IsOn="{Binding IsEnabled, Mode=TwoWay}" HorizontalAlignment="Right" FlowDirection="RightToLeft" UseLayoutRounding="True" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="SourceListTemplateHD">
+            <Grid Margin="0,0,0,5" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="InnerGrid" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="{Binding ImageUrl, TargetNullValue= '/Assests/LightGray.png'}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" />
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}" Margin="5,0,0,5" TextWrapping="WrapWholeWords" />
+                        <TextBlock Text="{Binding Description}"  Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" TextTrimming="CharacterEllipsis" TextLineBounds="Tight" MaxLines="1" />
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="2" OnContent="" OffContent="" IsOn="{Binding IsEnabled, Mode=TwoWay}" HorizontalAlignment="Right" FlowDirection="RightToLeft" UseLayoutRounding="True" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="SourceListTemplateWXGA">
+            <Grid Margin="0,0,0,5" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="InnerGrid" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="225"/>
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="{Binding ImageUrl, TargetNullValue= '/Assests/LightGray.png'}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" />
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}" Margin="5,0,0,5" TextWrapping="WrapWholeWords" />
+                        <TextBlock Text="{Binding Description}"  Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" TextTrimming="CharacterEllipsis" TextLineBounds="Tight" MaxLines="1" />
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="2" OnContent="" OffContent="" IsOn="{Binding IsEnabled, Mode=TwoWay}" HorizontalAlignment="Right" FlowDirection="RightToLeft" UseLayoutRounding="True" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="SourceListTemplateWVGA">
+            <Grid Margin="0,0,0,5" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="InnerGrid" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="240"/>
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="{Binding ImageUrl, TargetNullValue= '/Assests/LightGray.png'}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" />
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}" Margin="5,0,0,5" TextWrapping="WrapWholeWords" />
+                        <TextBlock Text="{Binding Description}"  Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" TextTrimming="CharacterEllipsis" TextLineBounds="Tight" MaxLines="1" />
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="2" OnContent="" OffContent="" IsOn="{Binding IsEnabled, Mode=TwoWay}" HorizontalAlignment="Right" FlowDirection="RightToLeft" UseLayoutRounding="True" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SourceListTemplateHD16">
+            <Grid Margin="0,0,0,5" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="InnerGrid" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="{Binding ImageUrl, TargetNullValue= '/Assests/LightGray.png'}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" />
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}" Margin="5,0,0,5" TextWrapping="WrapWholeWords" />
+                        <TextBlock Text="{Binding Description}"  Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" TextTrimming="CharacterEllipsis" TextLineBounds="Tight" MaxLines="1" />
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="2" OnContent="" OffContent="" IsOn="{Binding IsEnabled, Mode=TwoWay}" HorizontalAlignment="Right" FlowDirection="RightToLeft" UseLayoutRounding="True" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+
+    </Page.Resources>
+
+    <Grid x:Name="SourceGrid" Margin="20,10,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Πηγές" FontSize="40" />
+        <ListView x:Name="SourceList"
+            Grid.Row="1"
+            AutomationProperties.Name="Sources In App"
+            SelectionMode="None"
+            IsItemClickEnabled="False"
+            AutomationProperties.AutomationId="SourcesList"
+            ItemsSource="{Binding}">
+        </ListView>
+    </Grid>
+</Page>
