@@ -62,11 +62,17 @@ namespace News
     private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
     {
       SetTemplateForRes();
-      if (!(await CanDownloadSources()))
+      if (!CanDownloadSources())
       {
-        return;
+        MessageDialog message = new MessageDialog("Παρακαλώ επιλέξτε πηγές");
+        await message.ShowAsync();
+
+        if (!Frame.Navigate(typeof(SourcesPage)))
+        {
+          throw new Exception("NavigationFailedExceptionMessage");
+        }
       }
-      if (defaultViewModel.Count < 1)
+      else if (defaultViewModel.Count < 1)
       {
         LoadingBar.Visibility = Visibility.Visible;
         LoadingBar.IsEnabled = true;
@@ -135,50 +141,33 @@ namespace News
     }
     private async void AppBarButtonRefresh_Click(object sender, RoutedEventArgs e) 
     {
-       RefreshArticles();
+      await RefreshArticles();
     }
 
-    private async Task<bool> CanDownloadSources()
+    private bool CanDownloadSources()
     {
-      if (NewsDataSource.NewsProviders.Where(x => x.IsEnabled == true).Count() == 0)
-      {
-        MessageDialog message = new MessageDialog("Παρακαλώ επιλέξτε πηγές");
-        await message.ShowAsync();
-        if (!Frame.Navigate(typeof(SourcesPage)))
-        {
-          throw new Exception("NavigationFailedExceptionMessage");
-        }
-        return false;
-      }
-
-      return true;
+      return NewsDataSource.NewsProviders.Where(x => x.IsEnabled == true).Count() != 0;
     }
 
     private async Task RefreshArticles()
     {
 
-      if(!(await CanDownloadSources()))
+      if (!CanDownloadSources())
       {
-        return;
+        
+        if (!Frame.Navigate(typeof(SourcesPage)))
+        {
+          throw new Exception("NavigationFailedExceptionMessage");
+        }
       }
-
-      if (NetworkInterface.GetIsNetworkAvailable())
+      else if (NetworkInterface.GetIsNetworkAvailable())
       {
         LoadingBar.Visibility = Visibility.Visible;
         LoadingBar.IsEnabled = true;
-        //Hub.IsEnabled = false;     
-        //LoadingRing.IsEnabled = true;
-        //LoadingRing.IsActive = true;
-       // LoadingRing.Visibility = Visibility.Visible;
         var allGroups = await NewsDataSource.RefreshCategoriesAsync();
         defaultViewModel.Clear();
         this.defaultViewModel["AllCategories"] = allGroups;
-       
-        //LoadingRing.IsEnabled = false;
-        //LoadingRing.Visibility = Visibility.Collapsed;
-        //Hub.Visibility = Visibility.Visible;
-        //Hub.IsEnabled = true;
-        NewsDataSource.SaveSources();
+        await NewsDataSource.SaveSources();
         LoadingBar.Visibility = Visibility.Collapsed;
         LoadingBar.IsEnabled = false;
       }

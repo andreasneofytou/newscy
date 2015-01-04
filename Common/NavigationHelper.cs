@@ -1,4 +1,5 @@
-﻿using System;
+﻿using News.DataModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.System;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -208,11 +210,12 @@ namespace News.Common
         /// <param name="e">Event data describing the conditions that led to the event.</param>
         private void HardwareButtons_BackPressed(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e)
         {
-            if (this.GoBackCommand.CanExecute(null))
-            {
-                e.Handled = true;
-                this.GoBackCommand.Execute(null);
-            }
+        
+          if (this.GoBackCommand.CanExecute(null))
+          {
+            e.Handled = true;
+            this.GoBackCommand.Execute(null);
+          }
         }
 #else
         /// <summary>

@@ -67,7 +67,6 @@ namespace News
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-
             Frame rootFrame = Window.Current.Content as Frame;
 
             var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
@@ -75,8 +74,8 @@ namespace News
             statusBar.ForegroundColor = Windows.UI.Colors.White;
             statusBar.BackgroundOpacity = 1;
             statusBar.ProgressIndicator.Text = "News";
-            statusBar.ProgressIndicator.ShowAsync();
-            statusBar.ProgressIndicator.ProgressValue = 0;
+            await statusBar.ProgressIndicator.ShowAsync();
+            statusBar.ProgressIndicator.ProgressValue = 0; ;
 
             await NewsDataSource.LoadSources();
             // Do not repeat app initialization when the Window already has content,

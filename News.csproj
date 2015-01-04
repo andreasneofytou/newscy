@@ -178,14 +178,35 @@
     <Folder Include="Assets\Strings\" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="AdDuplex.Universal.Controls.WinPhone.XAML">
+      <HintPath>..\packages\AdDuplexWinPhone81.8.5.0.5\lib\portable-win81+wpa81\AdDuplex.Universal.Controls.WinPhone.XAML.winmd</HintPath>
+    </Reference>
+    <Reference Include="AdDuplex.Universal.WinPhone.WinRT">
+      <HintPath>..\packages\AdDuplexWinPhone81.8.5.0.5\lib\portable-win81+wpa81\AdDuplex.Universal.WinPhone.WinRT.winmd</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AdMediator.WindowsPhone81.AdDuplex">
+      <HintPath>..\packages\Microsoft.AdMediator.WindowsPhone81.AdDuplex.1.0.12\lib\wpa\Microsoft.AdMediator.WindowsPhone81.AdDuplex.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AdMediator.WindowsPhone81.MicrosoftAdvertising">
+      <HintPath>..\packages\Microsoft.AdMediator.WindowsPhone81.MicrosoftAdvertising.1.0.13\lib\wpa\Microsoft.AdMediator.WindowsPhone81.MicrosoftAdvertising.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AdMediator.WindowsPhone81.Smaato">
+      <HintPath>..\packages\Microsoft.AdMediator.WindowsPhone81.Smaato.1.0.6\lib\wpa\Microsoft.AdMediator.WindowsPhone81.Smaato.dll</HintPath>
+    </Reference>
+    <Reference Include="SOMAWP81">
+      <HintPath>..\packages\SOMAW81_Package.1.1.6\lib\wpa81\SOMAWP81.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.AdMediator81, Version=1.0">
+      <Name>Microsoft.AdMediator81</Name>
+    </SDKReference>
     <SDKReference Include="Microsoft.Advertising.Mobile.Display, Version=8.1">
       <Name>Microsoft.Advertising.Mobile.Display</Name>
     </SDKReference>
